@@ -2,9 +2,9 @@
 
   <h1 align="center">Total-Decom: Decomposed 3D Scene Reconstruction with Minimal Interaction</h1>
   <p align="center">
-    <a href="http://shawlyu.github.io/">Xiaoyang Lyu</a>
+    <a href="http://shawlyu.github.io/">Xiaoyang Lyu*</a>
     ·
-    <a href="">Chirui Chang</a>
+    <a href="">Chirui Chang*</a>
     ·
     <a href="https://daipengwa.github.io/">Peng Dai</a>
     ·
@@ -12,6 +12,7 @@
     ·
     <a href="https://xjqi.github.io/">Xiaojuan Qi</a> 
   </p>
+  <h3 align="right" style="font-size:10px">*Equal Contributions</h3>
   <h3 align="center">CVPR 2024</h3>
   <h3 align="center"><a href="https://arxiv.org/pdf/2403.19314.pdf">Paper</a> | <a href="">Project Page(Coming Soom)</a></h3>
   <div align="center"></div>
