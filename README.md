@@ -1,6 +1,6 @@
 <p align="center">
 
-  <h1 align="center">Learning A Room with the Occ-SDF Hybrid: Signed Distance Function Mingled with Occupancy Aids Scene Representation</h1>
+  <h1 align="center">Total-Decom: Decomposed 3D Scene Reconstruction with Minimal Interaction</h1>
   <p align="center">
     <a href="http://shawlyu.github.io/">Xiaoyang Lyu</a>
     ·
@@ -33,16 +33,3 @@
 - [ ] Opensource all the training code
 - [ ] Opensource the GUI
 - [ ] Downstream appliaction
-
-# Citation
-If you find our code or paper useful, please cite
-```
-@InProceedings{Lyu_2023_ICCV,
-    author    = {Lyu, Xiaoyang and Dai, Peng and Li, Zizhang and Yan, Dongyu and Lin, Yi and Peng, Yifan and Qi, Xiaojuan},
-    title     = {Learning a Room with the Occ-SDF Hybrid: Signed Distance Function Mingled with Occupancy Aids Scene Representation},
-    booktitle = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
-    month     = {October},
-    year      = {2023},
-    pages     = {8940-8950}
-}
-```
