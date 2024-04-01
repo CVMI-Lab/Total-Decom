@@ -14,7 +14,7 @@
   </p>
   <h3 align="right" style="font-size:10px">*Equal Contributions</h3>
   <h3 align="center">CVPR 2024</h3>
-  <h3 align="center"><a href="https://arxiv.org/pdf/2403.19314.pdf">Paper</a> | <a href="">Project Page(Coming Soom)</a></h3>
+  <h3 align="center"><a href="https://arxiv.org/pdf/2403.19314.pdf">Paper</a> | <a href="https://cvmi-lab.github.io/Total-Decom/">Project Page</a></h3>
   <div align="center"></div>
 </p>
 
@@ -30,7 +30,7 @@
 <br>
 
 # TODO
-- [ ] Create the project page
+- [x] Create the project page
 - [ ] Opensource all the training code
 - [ ] Opensource the GUI
 - [ ] Downstream appliaction
