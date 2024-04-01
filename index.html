@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Total-Decom: Decomposed 3D Scene Reconstruction with Minimal Interaction">
+    <meta name="keywords" content="Implicit Representation, Reconstruction, SAM, Interactive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Total-Decom</title>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'G-PYVRSFMDRL');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/hku.png">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+    <script src="./static/js/video_comparison.js"></script>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: auto auto auto auto auto auto;
+            gap: 10px;
+            padding: 0;
+        }
+
+        .grid-container>div {
+            text-align: center;
+            padding: 0;
+            font-size: 30px;
+        }
+
+        .item1 {
+            grid-column: 1 / 4;
+        }
+
+        .item2 {
+            grid-column: 4 / 7;
+        }
+
+        .item3 {
+            grid-column: 1 / 3;
+        }
+
+        .item4 {
+            grid-column: 3 / 5;
+        }
+
+        .item5 {
+            grid-column: 5 / 7;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div class="navbar-menu">
+            <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+                <a class="navbar-item" href="https://keunhong.com">
+                    <span class="icon">
+                        <i class="fas fa-home"></i>
+                    </span>
+                </a>
+
+                <div class="navbar-item has-dropdown is-hoverable">
+                    <a class="navbar-link">
+                        More Research
+                    </a>
+                    <div class="navbar-dropdown">
+                        <a class="navbar-item" href="https://shawlyu.github.io/Total-Decom/">
+                            Total-Decom
+                        </a>
+                        <a class="navbar-item" href="https://shawlyu.github.io/Occ-SDF-Hybrid/">
+                            Hybrid Occ-SDF
+                        </a>
+                        <a class="navbar-item" href="https://github.com/kyleleey/RICO">
+                            RICO
+                        </a>
+                        <a class="navbar-item" href="https://daipengwa.github.io/Hybrid-Rendering-ProjectPage/">
+                            Hybrid Rendering
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-1 publication-title">Total-Decom: Decomposed 3D Scene Reconstruction with
+                            Minimal Interaction</h1>
+                        <div class="column has-text-centered">
+                            <h1 class="subtitle has-text-centered">
+                                <b>
+                                    Computer Vision and Pattern Recognition Conference (CVPR), 2024
+                                </b>
+                            </h1>
+                        </div>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="http://shawlyu.github.io/">Xiaoyang Lyu</a>*,
+                            </span>
+                            Chirui Chang*,
+                            <span class="author-block">
+                                <a href="https://daipengwa.github.io/">Peng Dai</a>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://sunyangtian.github.io/">Yang-Tian Sun</a>,
+                            </span>
+                            <span class="author-block">
+                                <a href="https://xjqi.github.io/">Xiaojuan Qi</a>
+                            </span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">The University of Hong Kong, <a
+                                    href="https://xjqi.github.io/cvmi.html">CVMI-Lab</a></span>
+                        </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <!-- PDF Link. -->
+                                <span class="link-block">
+                                    <a href="./static/paper/Decomposed_Scene_Reconstruction.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Paper</span>
+                                    </a>
+                                </span>
+                                <span class="link-block">
+                                    <a href="https://arxiv.org/pdf/2403.19314.pdf"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="ai ai-arxiv"></i>
+                                        </span>
+                                        <span>arXiv</span>
+                                    </a>
+                                </span>
+                                <!-- Code Link. -->
+                                <span class="link-block">
+                                    <a href="https://github.com/CVMI-Lab/Total-Decom"
+                                        class="external-link button is-normal is-rounded is-dark">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code (Coming Soon)</span>
+                                    </a>
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop">
+            <div class="hero-body">
+                <center>
+                    <img src="./static/images/teaser.png" alt="Teaser Map" width="1200">
+                </center>
+                <h2 class="subtitle has-text-centered">
+                    <span class="dnerf">Total-Decom</span> can (a) performs 3D reconstruction from posed multiview
+                    images,
+                    (b) decomposes the reconstructed mesh to generate high-quality meshes for individual
+                    objects and backgrounds with minimal human annotations. This approach facilitates such applications
+                    as
+                    (c) object re-texturing and (d) scene reconfiguration.
+                </h2>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>Scene reconstruction from multi-view images is a fundamental problem in computer vision and
+                            graphics.
+                            Recent neural implicit surface reconstruction methods have achieved high-quality results;
+                            however, editing and manipulating the 3D geometry of reconstructed scenes remains
+                            challenging due to the absence of naturally decomposed object entities and complex
+                            object/background compositions.
+                            In this paper, we present Total-Decom, a novel method for decomposed 3D reconstruction with
+                            minimal human interaction.
+                            Our approach seamlessly integrates the Segment Anything Model (SAM) with hybrid
+                            implicit-explicit neural surface representations and a mesh-based region-growing technique
+                            for accurate 3D object decomposition.
+                            Total-Decom requires minimal human annotations while providing users with real-time control
+                            over the granularity and quality of decomposition.
+                            We extensively evaluate our method on benchmark datasets and demonstrate its potential for
+                            downstream applications, such as animation and scene editing.
+                        </p>
+                        <p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ Abstract. -->
+        </div>
+    </section>
+
+
+    <section class="section" id="Method">
+        <div class="container is-max-desktop">
+            <!-- Animation. -->
+            <div class="columns is-centered">
+                <div class="column is-full-width">
+                    <div class="columns is-centered has-text-centered">
+                        <h2 class="title is-3">Decomposed Reconstruction</h2>
+                    </div>
+                    <!-- Empirical study on general visual features. -->
+                    <h3 class="title is-4">Empirical study on general visual features.</h3>
+                    <center>
+                        <img src="./static/images/Feature_vis/PCA.png" width="90%">
+                    </center>
+                    <p>
+                        We utilize the MonoSDF for implicit neural surface reconstruction, augment it with a feature
+                        rendering head,
+                        and distill features from the above 2D backbones. The rendered features after distillation are
+                        depicted
+                        in the above figure. We observe that: (1) distilled CLIP-LSeg features cannot distinguish
+                        objects of the same categories;
+                        (2) distilled DINO features lack accurate object boundaries; and (3) distilled SAM features
+                        preserve object boundaries.
+                    </p>
+                    <!-- Foreground and Background -->
+                    <h3 class="title is-4">Foreground and background decomposed reconstruction.</h3>
+                    <center>
+                        <img src="./static/images/pipeline.png" width="90%">
+                    </center>
+                    <p>
+                        The whole pipeline for our decomposed reconstructed method. We have four networks in
+                        this stage to predict the geometry, appearance, semantic, and SAM features per point.
+                        We follow the ObjSDF++ to use the foreground and background compositional representation
+                        with pseudo geometry priors and apply min operation to construct the whole scene. Notably,
+                        the foreground is constrained with object distinct loss (Eq. (6)) and the background is
+                        regularized with Manhattan loss (Eq. (7)) and floor reflection loss (Eq. (8)).
+                        Furthermore, we also train a solely feature network to render the generalized features.
+                        (Please check the paper for more details)
+                    </p>
+                    <!--/ Foreground and Background. -->
+
+                    <script type="module"
+                        src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+                    <script src="static/js/vis.js"></script>
+                    <!-- Foreground and Background decomposed results.-->
+                    <h3 class="title is-5">Foreground and background decomposed results.</h3>
+                    <p class="caption selection" style="grid-column-start: 1; grid-column-end: 3;">
+                        Visualisation of Scene
+                        <Select id="partial_label-selector1_3D" class="partial_label-selector-3D"
+                            style="padding: 2px; background:#f0f0f0; border:none; font-family: 'Noto Sans', sans-serif; font-size:16px;">
+                            <option value="room0" selected>Room0</option>
+                            <option value="Room1">Room1</option>
+                            <option value="Apartment">Apartment</option>
+                        </Select>.
+                    </p>
+                    <br>
+                    <!--    <div class="columns is-centered has-text-centered">-->
+                    <!--    </div>-->
+                    <div class="columns is-centered">
+                        <!-- Wheel -->
+                        <div class="column">
+                            <div class="content" center>
+                                <h4 class="title is-5 has-text-centered">All</h4>
+                            </div>
+                        </div>
+
+                        <!-- Wheel -->
+                        <div class="column">
+                            <div class="content" center>
+                                <h4 class="title is-5 has-text-centered">Background</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- room_0 -->
+                    <div class="partial_label_3D room0">
+                        <div class="grid-container">
+                            <div class="item1">
+                                <model-viewer style="height: 360px; width: 480px;" alt="all"
+                                    src="./static/meshes/room_0/all.glb" camera-controls auto-rotate exposure=".4"
+                                    generate-schema>
+                                </model-viewer>
+                            </div>
+                            <div class="item2">
+                                <model-viewer style="height: 360px; width: 480px;" alt="bg"
+                                    src="./static/meshes/room_0/bg.glb" camera-controls auto-rotate exposure=".4"
+                                    generate-schema>
+                                </model-viewer>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- apartment -->
+                    <div class="partial_label_3D Room1" style="display: none">
+                        <div class="grid-container">
+                            <div class="item1">
+                                <model-viewer style="height: 360px; width: 480px;" alt="all"
+                                    src="./static/meshes/room_1/all.glb" camera-controls auto-rotate exposure="1.0"
+                                    generate-schema>
+                                </model-viewer>
+                            </div>
+                            <div class="item2">
+                                <model-viewer style="height: 360px; width: 480px;" alt="bg"
+                                    src="./static/meshes/room_1/bg.glb" camera-controls auto-rotate exposure="1.0"
+                                    generate-schema>
+                                </model-viewer>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- apartment -->
+                    <div class="partial_label_3D Apartment" style="display: none">
+                        <div class="grid-container">
+                            <div class="item1">
+                                <model-viewer style="height: 360px; width: 480px;" alt="all"
+                                    src="./static/meshes/apartment/all.glb" camera-controls auto-rotate exposure=".8"
+                                    generate-schema>
+                                </model-viewer>
+                            </div>
+                            <div class="item2">
+                                <model-viewer style="height: 360px; width: 480px;" alt="bg"
+                                    src="./static/meshes/apartment/bg.glb" camera-controls auto-rotate exposure=".8"
+                                    generate-schema>
+                                </model-viewer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Animation. -->
+
+        <div class="container is-max-desktop">
+            <div class="column is-full-width">
+                <div class="columns is-centered has-text-centered">
+                    <h2 class="title is-3">Interactive Selection Video</h2>
+                </div>
+                <div class="columns is-centered has-text-centered">
+                <div class="publication-video">
+                    <video controls="" width="800" height="500" muted="" loop="" autoplay="">
+                        <source src="./static/video/interactive_demo.mp4" type="video/mp4">
+                    </video>
+                </div>
+                </div>
+                <div class="column has-text-justified">
+                    <p>
+                        We have designed a graphical user interface (GUI) to interactively decompose desired objects for downstream applications. 
+                        The foreground and background reconstructed meshes are loaded simultaneously, and the vertices are used as fixed initialization 
+                        points to train the Gaussian Splatting model for real-time rendering. Regarding feature rendering, we utilize the trained grid 
+                        and apply the rasterization method to obtain the feature map of the observed view. The rendered features and selected 
+                        prompts are then passed into the SAM decoder to generate the mask for region-growing. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code> @article{lyu2024total,
+            title={Total-Decom: Decomposed 3D Scene Reconstruction with Minimal Interaction},
+            author={Lyu, Xiaoyang and Chang, Chirui and Dai, Peng and Sun, Yang-Tian and Qi, Xiaojuan},
+            journal={arXiv preprint arXiv:2403.19314},
+            year={2024}}
+                </code></pre>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <a class="icon-link" href="./static/paper/Decomposed_Scene_Reconstruction.pdf">
+                    <i class="fas fa-file-pdf"></i>
+                </a>
+                <a class="icon-link" href="https://github.com/shawLyu" class="external-link" disabled>
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-8">
+                    <div class="content">
+                        <p>
+                            This website is licensed under a <a rel="license"
+                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                                Commons Attribution-ShareAlike 4.0 International License</a>.
+                        </p>
+                        <p>
+                            This template is borrowed from<a
+                                href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+                            Thanks for their sharing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
