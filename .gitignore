@@ -1,0 +1,43 @@
+# Experiment outputs and downloaded assets
+code/run_logs/
+exps/
+evals/
+data/
+pretrained_models/
+meshes/
+logs/
+tmp/
+uploadtnt_*/
+dtu_eval/Offical_DTU_Dataset/
+
+# GUI outputs and local model assets
+gui/logs/
+gui/data/
+gui/sam_checkpoints/
+gui/tmp/
+
+# Compiled extensions and Python caches
+__pycache__/
+*.py[cod]
+*.so
+build/
+dist/
+*.egg-info/
+code/tmp_build/
+tmp_build/
+
+# Local environments and tooling
+.env
+.venv/
+env/
+venv/
+.idea/
+.vscode/
+.DS_Store
+.pytest_cache/
+.mypy_cache/
+.ipynb_checkpoints/
+
+# Generated geometry and archives
+*.ply
+*.tar

@@ -1,0 +1,5 @@
+logs/
+data/
+sam_checkpoints/
+test_scripts/
+__pycache__/
